@@ -4,7 +4,6 @@ import types from './types';
 
 /**
  * Main action dispatcher
- * see react-redux examples: https://react-redux.js.org/api/hooks#examples
  */
 export default function useHook() {
   const dispatch = useDispatch();
