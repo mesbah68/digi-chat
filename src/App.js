@@ -1,40 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { useMessageActions, useUserActions, MessageSelectors, UserSelectors } from './@redux';
+import { MessageSelectors } from './@redux';
 import { GlobalStyles } from './globalStyles'
 import {Cell, Grid} from "styled-css-grid";
 import Sidebar from "./components/SideBar";
 import Content from "./components/Content";
 
 function App() {
-  const [message, setMessage] = useState('');
-
 
   /**
    * messages selectors
    */
   const activeMessage = useSelector(MessageSelectors.getActiveMessage);
   const messagesList = useSelector(MessageSelectors.getMessagesList);
-
-  /**
-   * user actions
-   */
-  const {
-    addContact,
-    deleteContact,
-    clearContacts
-  } = useUserActions();
-
-  /**
-   * message actions
-   */
-  const {
-    openNewMessage,
-    setActiveChat,
-    sendMessage,
-    removeMessage,
-    clearAllMessages
-  } = useMessageActions();
 
   return <>
     <GlobalStyles />
