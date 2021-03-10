@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {Document3Icon, Location4Icon} from "@iconbox/iconly";
 import {useSelector} from "react-redux";
 import {MessageSelectors, useMessageActions} from "../../@redux";
@@ -24,6 +24,7 @@ const Send = () => {
   const activeMessage = useSelector(MessageSelectors.getActiveMessage);
   const messages = useSelector(MessageSelectors.getMessagesList);
 
+  const inputFile = useRef(null);
   const sendAnswer = (answer, byMe = true) => {
     const myAnswer = {
       id: uuid(),
@@ -31,6 +32,7 @@ const Send = () => {
       date: new Date().getTime(),
       byMe
     };
+
 
     const newMessages = messages.map(message => {
       if(message.id === activeMessage.id) {
@@ -54,11 +56,16 @@ const Send = () => {
     }, 2000);
   }
 
+  const handleFileSelect = () => {
+    // inputFile.current.click();
+  }
+
   return (
     <StyledFooter onSubmit={handleSendAnswer}>
       <input value={answer} onChange={e => setAnswer(e.target.value)} type="text" />
+      <input type="file" id="file" ref={inputFile} style={{display: 'none'}} />
       <button className="action-r"><Location4Icon /></button>
-      <button className="action-r"><Document3Icon /></button>
+      <button className="action-r" onClick={handleFileSelect}><Document3Icon /></button>
       <button type="submit" className="send" >ارسال</button>
     </StyledFooter>
   );
