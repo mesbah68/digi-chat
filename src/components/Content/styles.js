@@ -123,3 +123,16 @@ export const EmptyContent = styled.div`
   text-align: center;
   margin: 20px
 `;
+export const StyledMenuWrapper = styled.div`
+  background-color: #fff;
+  padding: 10px;
+  text-align: left;
+  display: ${props => props.visibility ? 'inline-block' : 'none'};
+  cursor: pointer;
+  margin: 5px;
+  padding: 0 50px;
+  border: 1px solid #cccccc59;
+  position: absolute;
+  left: 0;
+  z-index: 99;
+`;
